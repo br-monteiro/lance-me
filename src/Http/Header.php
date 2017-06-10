@@ -12,19 +12,19 @@ namespace LanceMeCore\Http;
 class Header
 {
 
-    public function setHttpHeader($codigo, $mesagem = null)
+    public function setHttpHeader($codigo, $mensagem = null)
     {
         http_response_code($codigo);
-        echo $mesagem ? : null;
+        echo $mensagem ? : null;
     }
 
     /**
      * Seta o cabeçalho da requisiçao HTTP para o erro 404
      */
-    public function erro404($mensagem = null)
+    public function erro404()
     {
         $this->setHttpHeader(404);
-        echo '404 ' . $mensagem ? : 'Not Found.';
+        echo '404 Not Found.';
         exit;
     }
 }

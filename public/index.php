@@ -1,6 +1,6 @@
 <?php
 /**
- * Projeto de um simples encutador de URL
+ * Projeto de um simples encurtador de URL
  * @author Edson B S MOnteiro <bruno.monteirodg@gmail.com>
  * @version 0.0.1
  * 
@@ -12,6 +12,11 @@ define('DS', DIRECTORY_SEPARATOR);
 // incluindo o autoload do composer
 require_once '..' . DS . 'vendor' . DS . 'autoload.php';
 
-$t = new LanceMeCore\RouterSystem\RouteSystemConfig();
-$x = new LanceMeCore\Bootstrap\InitApp();
-dump($t, $x);
+try {
+    
+    $app = new \LanceMeCore\Bootstrap\InitApp();
+    $app->run();
+    
+} catch (Exception $ex) {
+    echo $ex->getMessage();
+}

@@ -1,7 +1,7 @@
 <?php
 /**
- * @author Edson B S MOnteiro <bruno.monteirodg@gmail.com>
- * @version 0.0.1
+ * @author Edson B S Monteiro <bruno.monteirodg@gmail.com>
+ * @version 0.0.2
  * 
  * LAUS DEO
  * 
@@ -19,14 +19,14 @@ class RouteMap
 
     /**
      * Verifica se a definiçao da rota e valida
-     * @param \LanceMeCore\RouterSystem\arra $definicaoDaRota
+     * @param array $definicaoDaRota
      * @return $this
      * @throws Exception
      */
-    private function verificaRota(arra $definicaoDaRota)
+    private function verificaEstruturaDaRota(array $definicaoDaRota)
     {
         if (count($definicaoDaRota) != 3) {
-            throw new Exception("A definiçao da rota nao e valida");
+            throw new \Exception("A definiçao da rota nao e valida");
         }
 
         return $this;
@@ -40,13 +40,16 @@ class RouteMap
     public function rotaGet(array $definicaoDaRota)
     {
         // valida a rota
-        $this->verificaRota($definicaoDaRota);
+        $this->verificaEstruturaDaRota($definicaoDaRota);
+
+        // explode a rota para facilitar o armazenamento em tabela de espalhamento
+        // o que facilita na hora de recuperar esta definiçao de rota para consulta
+        $arrRotaExplodida = explode('/', $definicaoDaRota[0]);
+
         // registra a rota
-        $this->arrRouteMap['GET'] = [
-            'rota' => $definicaoDaRota[0],
-            'controller' => $definicaoDaRota[1],
-            'action' => $definicaoDaRota[2]
-        ];
+        // por padrao as rotas definidas sao registradas seguindo a classificaçao:
+        // MetodoHTTP -> tamanhoDoArrayDeRotas -> indiceDinamico
+        $this->arrRouteMap['GET'][count($arrRotaExplodida)][] = $this->propriedadesDoArrayDeRotas($definicaoDaRota, $arrRotaExplodida);
 
         return $this;
     }
@@ -59,14 +62,42 @@ class RouteMap
     public function rotaPost(array $definicaoDaRota)
     {
         // valida a rota
-        $this->verificaRota($definicaoDaRota);
+        $this->verificaEstruturaDaRota($definicaoDaRota);
+
+        // explode a rota para facilitar o armazenamento em tabela de espalhamento
+        // o que facilita na hora de recuperar esta definiçao de rota para consulta
+        $arrRotaExplodida = explode('/', $definicaoDaRota[0]);
+
         // registra a rota
-        $this->arrRouteMap['POST'] = [
-            'rota' => $definicaoDaRota[0],
-            'controller' => $definicaoDaRota[1],
-            'action' => $definicaoDaRota[2]
-        ];
+        // por padrao as rotas definidas sao registradas seguindo a classificaçao:
+        // MetodoHTTP -> tamanhoDoArrayDeRotas -> indiceDinamico
+        $this->arrRouteMap['POST'][count($arrRotaExplodida)][] = $this->propriedadesDoArrayDeRotas($definicaoDaRota, $arrRotaExplodida);
 
         return $this;
+    }
+
+    /**
+     * Configura das propriedades da rota a ser registradas
+     * @param array $definicaoDaRota
+     * @param array $arrRotaExplodida
+     * @return array
+     */
+    private function propriedadesDoArrayDeRotas(array $definicaoDaRota, array $arrRotaExplodida)
+    {
+        return [
+            'rota' => $definicaoDaRota[0],
+            'exec' => $definicaoDaRota[1],
+            'regras' => $definicaoDaRota[2],
+            'arrRota' => $arrRotaExplodida
+        ];
+    }
+
+    /**
+     * Retorna o array de rotas registradas
+     * @return array arrRouteMap
+     */
+    public function getArrRouteMap()
+    {
+        return $this->arrRouteMap;
     }
 }

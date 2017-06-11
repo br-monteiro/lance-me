@@ -26,7 +26,7 @@ class EnderecosController extends AbstractController implements ControllerInterf
 
     public function index()
     {
-        // todo
+        $this->enderecosModel->retornaStats();
     }
 
     public function redirecionar()

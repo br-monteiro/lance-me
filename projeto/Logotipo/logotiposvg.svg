@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="400"
+   height="118"
+   viewBox="0 0 400 118"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="logotiposvg.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="53.392853"
+     inkscape:cy="18.31955"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="2560"
+     inkscape:window-height="1017"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-934.36216)">
+    <g
+       id="g4202"
+       transform="matrix(2.0483399,0,0,2.0483399,-5.1211835,-820.02409)">
+      <g
+         transform="matrix(1.3673208,0,0,1.3673208,-19.203747,-376.69468)"
+         id="g4194">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#220055;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="16.071428"
+           y="931.64789"
+           id="text4136"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4138"
+             x="16.071428"
+             y="931.64789"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Lobster 1.4';-inkscape-font-specification:'Lobster 1.4, ';fill:#220055">Lance</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#00ccff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="101.86105"
+           y="931.97992"
+           id="text4136-0"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4138-2"
+             x="101.86105"
+             y="931.97992"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Lobster 1.4';-inkscape-font-specification:'Lobster 1.4, ';fill:#00ccff">.</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#00d4aa;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="113.53377"
+           y="931.90179"
+           id="text4136-0-2"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan4138-2-9"
+             x="113.53377"
+             y="931.90179"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Lobster 1.4';-inkscape-font-specification:'Lobster 1.4, ';fill:#00d4aa">me</tspan></text>
+      </g>
+      <text
+         sodipodi:linespacing="125%"
+         id="text4176"
+         y="911.81683"
+         x="97.384521"
+         style="font-style:normal;font-weight:normal;font-size:54.69283295px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#216778;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.67320824px;font-family:NanumGothic;-inkscape-font-specification:NanumGothic"
+           y="911.81683"
+           x="97.384521"
+           id="tspan4178"
+           sodipodi:role="line">Go ShortURL &gt;&gt;</tspan></text>
+    </g>
+  </g>
+</svg>

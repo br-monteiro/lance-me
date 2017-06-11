@@ -53,13 +53,13 @@ class EnderecosModel extends ModelAbstract
     {
         // valida os dados enviados
         $this->validaDadosDeEntrtada();
+        $this->contentType();
 
         $usuarioModel = new UsuariosModel();
         // verifica se o usuario e valido
         $usuario = $usuarioModel->consultaUsuarioPorNome($userId);
 
         if (!$usuario) {
-            $this->contentType();
             $this->header->setHttpHeader(205);
             return false;
         }
@@ -72,7 +72,7 @@ class EnderecosModel extends ModelAbstract
 
             $this->header->setHttpHeader(201);
 
-            $this->contentType()->toJson([
+            $this->toJson([
                 "id" => $this->pdo()->lastInsertId(),
                 "hits" => 0,
                 "url" => $this->url,
@@ -131,13 +131,14 @@ class EnderecosModel extends ModelAbstract
     public function retornaStatsPorId($idUrl)
     {
         $stats = $this->retornaRegistroPorId($idUrl);
+        $this->contentType();
 
         if (!$stats) {
             $this->header->setHttpHeader(404);
             return false;
         }
 
-        $this->contentType()->toJson([
+        $this->toJson([
             "id" => $stats['id'],
             "hits" => (int) $stats['hits'],
             "url" => $stats['url'],
@@ -153,6 +154,7 @@ class EnderecosModel extends ModelAbstract
     public function deletaUrlPorId($idUrl)
     {
         $stats = $this->retornaRegistroPorId($idUrl);
+        $this->contentType();
 
         if (!$stats) {
             $this->header->setHttpHeader(404);
@@ -160,7 +162,6 @@ class EnderecosModel extends ModelAbstract
         }
 
         $stmt = $this->pdo()->prepare("DELETE FROM {$this->entidade} WHERE id = ?");
-        $this->contentType();
 
         if (!$stmt->execute([$idUrl])) {
             $this->header->setHttpHeader(500);

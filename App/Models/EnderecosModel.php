@@ -123,6 +123,11 @@ class EnderecosModel extends ModelAbstract
         ]);
     }
 
+    /**
+     * Retorna o stats de url pra o id informado
+     * @param int $idUrl
+     * @return boolean
+     */
     public function retornaStatsPorId($idUrl)
     {
         $stmt = $this->pdo()->prepare("SELECT * FROM {$this->entidade} WHERE id = ? ;");
@@ -144,6 +149,7 @@ class EnderecosModel extends ModelAbstract
 
     /**
      * Retorna os dez registros mais acessados
+     * @param int $userId
      * @return array Resultado com os Top 10 mais acessados
      */
     private function retornaTopDez($userId = null)
@@ -155,6 +161,11 @@ class EnderecosModel extends ModelAbstract
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Retorna as estatisticas de acesso ao sistema
+     * @param int $userId
+     * @return array
+     */
     private function retornaStatsDeAcesso($userId = null)
     {
         $whereUsuario = $userId ? ' WHERE usuarios_id = ' . $userId : null;

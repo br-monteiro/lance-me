@@ -82,6 +82,39 @@ class EnderecosModel extends ModelAbstract
             return true;
         }
     }
+    
+    /**
+     * Retorna statisticas de acesso
+     */
+    public function retornaStats()
+    {
+        $stats = $this->retornaStatsDeAcesso();
+        $topDez = $this->retornaTopDez();
+        
+        $this->contentType()->toJson([
+            "hists" => $stats['qtdHits'],
+            "urlCount" => $stats['qtdRegistros'],
+            "topUrls" => $topDez
+        ]);
+    }
+
+    /**
+     * Retorna os dez registros mais acessados
+     * @return array Resultado com os Top 10 mais acessados
+     */
+    private function retornaTopDez()
+    {
+        $stmt = $this->pdo()->prepare("SELECT id, hits, url, shortUrl FROM {$this->entidade} ORDER BY hits DESC LIMIT 10");
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    private function retornaStatsDeAcesso()
+    {
+        $stmt = $this->pdo()->prepare("SELECT COUNT(*) as qtdRegistros, SUM(hits) AS qtdHits FROM {$this->entidade}");
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
 
     /**
      * Valida os Dados enviados

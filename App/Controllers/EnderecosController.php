@@ -34,4 +34,9 @@ class EnderecosController extends AbstractController implements ControllerInterf
         $idUrl = $this->getParams('id');
         $this->enderecosModel->verificaUrlPorId($idUrl);
     }
+    
+    public function novo(){
+        $userId = $this->getParams('userid');
+        $this->enderecosModel->adicionaEndereco($userId);
+    }
 }

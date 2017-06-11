@@ -59,6 +59,24 @@ class UsuariosModel extends ModelAbstract
         return $this;
     }
 
+    /**
+     * Consulta usuario por Nome
+     * @param string $nomeDoUsuario
+     * @return boolean | string
+     */
+    final public function consultaUsuarioPorNome($nomeDoUsuario)
+    {
+        $stmt = $this->pdo()->prepare("SELECT * FROM {$this->entidade} WHERE nome = ?");
+        $stmt->execute([$nomeDoUsuario]);
+        $usuario = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if ($usuario) {
+            return $this->toJson($usuario);
+        }
+
+        return false;
+    }
+
     private function evitaDuplicidadeDeUsuarios()
     {
         $stmt = $this->pdo()->prepare("SELECT id FROM {$this->entidade} WHERE nome = ?");

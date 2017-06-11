@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Edson B S Monteiro <bruno.monteirodg@gmail.com>
- * @version 0.0.1
+ * @version 0.0.2
  * 
  * LAUS DEO
  * 
@@ -29,7 +29,7 @@ class UsuariosController extends AbstractController implements ControllerInterfa
         dump($this->getParams('id'));
     }
 
-    public function criar()
+    public function novo()
     {
         $this->usuariosModel->adicionaUsuario();
     }

@@ -53,7 +53,7 @@ class Route
                 'id' => '/\d+/'
         ]]);
 
-        $this->routeMap->rotaDelete(['/user/{userId}', 'UsuariosController@novo', [
+        $this->routeMap->rotaDelete(['/user/{userId}', 'UsuariosController@deleteUsuarioPorId', [
                 'userId' => '/\w+/'
         ]]);
     }

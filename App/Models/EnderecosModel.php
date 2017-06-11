@@ -123,6 +123,25 @@ class EnderecosModel extends ModelAbstract
         ]);
     }
 
+    public function retornaStatsPorId($idUrl)
+    {
+        $stmt = $this->pdo()->prepare("SELECT * FROM {$this->entidade} WHERE id = ? ;");
+        $stmt->execute([$idUrl]);
+        $stats = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$stats) {
+            $this->header->setHttpHeader(404);
+            return false;
+        }
+
+        $this->contentType()->toJson([
+            "id" => $stats['id'],
+            "hits" => (int) $stats['hits'],
+            "url" => $stats['url'],
+            "shortUrl" => $stats['shortUrl']
+        ]);
+    }
+
     /**
      * Retorna os dez registros mais acessados
      * @return array Resultado com os Top 10 mais acessados

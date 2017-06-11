@@ -30,13 +30,15 @@ class Route
     public function registra()
     {
         $this->routeMap->rotaGet(['/urls/{id}', 'EnderecosController@redirecionar', [
-            'id' => '/\d+/'
+                'id' => '/\d+/'
         ]]);
-        
+
         $this->routeMap->rotaPost(['/users/{userid}/urls', 'EnderecosController@novo', [
-            'userid' => '/\w+/'
+                'userid' => '/\w+/'
         ]]);
-        
+
+        $this->routeMap->rotaGet(['/stats', 'EnderecosController@index', []]);
+
         $this->routeMap->rotaPost(['/users', 'UsuariosController@novo', []]);
         $this->routeMap->rotaGet(['/teste', 'TesteController@index', []]);
     }

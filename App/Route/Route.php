@@ -33,7 +33,11 @@ class Route
             'id' => '/\d+/'
         ]]);
         
-        $this->routeMap->rotaPost(['/users', 'UsuariosController@criar', []]);
+        $this->routeMap->rotaPost(['/users/{userid}/urls', 'EnderecosController@novo', [
+            'userid' => '/\w+/'
+        ]]);
+        
+        $this->routeMap->rotaPost(['/users', 'UsuariosController@novo', []]);
         $this->routeMap->rotaGet(['/teste', 'TesteController@index', []]);
     }
 

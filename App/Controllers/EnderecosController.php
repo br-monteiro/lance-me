@@ -37,13 +37,13 @@ class EnderecosController extends AbstractController implements ControllerInterf
 
     public function novo()
     {
-        $userId = $this->getParams('userid');
+        $userId = $this->getParams('userId');
         $this->enderecosModel->adicionaEndereco($userId);
     }
 
     public function statsPorUsuario()
     {
-        $userId = $this->getParams('userid');
+        $userId = $this->getParams('userId');
         $this->enderecosModel->retornaStatsPorUsuario($userId);
     }
 

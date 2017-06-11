@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Edson B S Monteiro <bruno.monteirodg@gmail.com>
- * @version 0.0.2
+ * @version 0.0.3
  * 
  * LAUS DEO
  * 
@@ -12,10 +12,9 @@ namespace LanceMeCore\Http;
 class Header
 {
 
-    public function setHttpHeader($codigo, $mensagem = null)
+    public function setHttpHeader($codigo)
     {
         http_response_code($codigo);
-        echo $mensagem ? : null;
     }
 
     /**

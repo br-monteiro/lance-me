@@ -26,11 +26,17 @@ class UsuariosController extends AbstractController implements ControllerInterfa
 
     public function index()
     {
-        dump($this->getParams('id'));
+        // todo
     }
 
     public function novo()
     {
         $this->usuariosModel->adicionaUsuario();
+    }
+
+    public function deleteUsuarioPorId()
+    {
+        $userId = $this->getParams('userId');
+        $this->usuariosModel->deleteUsuarioPorId($userId);
     }
 }

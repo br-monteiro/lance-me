@@ -33,13 +33,19 @@ class Route
                 'id' => '/\d+/'
         ]]);
 
-        $this->routeMap->rotaPost(['/users/{userid}/urls', 'EnderecosController@novo', [
-                'userid' => '/\w+/'
+        $this->routeMap->rotaDelete(['/urls/{id}', 'EnderecosController@deletaUrlPorId', [
+                'id' => '/\d+/'
         ]]);
 
-        $this->routeMap->rotaGet(['/users/{userid}/stats', 'EnderecosController@statsPorUsuario', [
-                'userid' => '/\w+/'
+        $this->routeMap->rotaPost(['/users/{userId}/urls', 'EnderecosController@novo', [
+                'userId' => '/\w+/'
         ]]);
+
+        $this->routeMap->rotaGet(['/users/{userId}/stats', 'EnderecosController@statsPorUsuario', [
+                'userId' => '/\w+/'
+        ]]);
+
+        $this->routeMap->rotaPost(['/users', 'UsuariosController@novo', []]);
 
         $this->routeMap->rotaGet(['/stats', 'EnderecosController@index', []]);
 
@@ -47,12 +53,9 @@ class Route
                 'id' => '/\d+/'
         ]]);
 
-        $this->routeMap->rotaDelete(['/urls/{id}', 'EnderecosController@deletaUrlPorId', [
-                'id' => '/\d+/'
+        $this->routeMap->rotaDelete(['/user/{userId}', 'UsuariosController@novo', [
+                'userId' => '/\w+/'
         ]]);
-
-        $this->routeMap->rotaPost(['/users', 'UsuariosController@novo', []]);
-        $this->routeMap->rotaGet(['/teste', 'TesteController@index', []]);
     }
 
     /**

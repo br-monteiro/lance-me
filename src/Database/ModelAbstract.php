@@ -30,6 +30,7 @@ class ModelAbstract
     }
     
     protected function toJson($json) {
+        header('Content-type:application/json;charset=utf-8');
         echo json_encode($json);
     }
 }

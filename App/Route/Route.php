@@ -43,6 +43,9 @@ class Route
 
         $this->routeMap->rotaGet(['/stats', 'EnderecosController@index', []]);
 
+        $this->routeMap->rotaGet(['/stats/{id}', 'EnderecosController@statsPorId', [
+                'id' => '/\d+/'
+        ]]);
         $this->routeMap->rotaPost(['/users', 'UsuariosController@novo', []]);
         $this->routeMap->rotaGet(['/teste', 'TesteController@index', []]);
     }

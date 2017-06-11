@@ -46,4 +46,10 @@ class EnderecosController extends AbstractController implements ControllerInterf
         $userId = $this->getParams('userid');
         $this->enderecosModel->retornaStatsPorUsuario($userId);
     }
+
+    public function statsPorId()
+    {
+        $idUrl = $this->getParams('id');
+        $this->enderecosModel->retornaStatsPorId($idUrl);
+    }
 }

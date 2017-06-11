@@ -37,6 +37,10 @@ class Route
                 'userid' => '/\w+/'
         ]]);
 
+        $this->routeMap->rotaGet(['/users/{userid}/stats', 'EnderecosController@statsPorUsuario', [
+                'userid' => '/\w+/'
+        ]]);
+
         $this->routeMap->rotaGet(['/stats', 'EnderecosController@index', []]);
 
         $this->routeMap->rotaPost(['/users', 'UsuariosController@novo', []]);

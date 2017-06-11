@@ -52,4 +52,10 @@ class EnderecosController extends AbstractController implements ControllerInterf
         $idUrl = $this->getParams('id');
         $this->enderecosModel->retornaStatsPorId($idUrl);
     }
+
+    public function deletaUrlPorId()
+    {
+        $idUrl = $this->getParams('id');
+        $this->enderecosModel->deletaUrlPorId($idUrl);
+    }
 }

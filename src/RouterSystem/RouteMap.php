@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Edson B S Monteiro <bruno.monteirodg@gmail.com>
- * @version 0.0.2
+ * @version 0.0.3
  * 
  * LAUS DEO
  * 
@@ -72,6 +72,28 @@ class RouteMap
         // por padrao as rotas definidas sao registradas seguindo a classificaçao:
         // MetodoHTTP -> tamanhoDoArrayDeRotas -> indiceDinamico
         $this->arrRouteMap['POST'][count($arrRotaExplodida)][] = $this->propriedadesDoArrayDeRotas($definicaoDaRota, $arrRotaExplodida);
+
+        return $this;
+    }
+
+    /**
+     * Registra uma rota para o metodo DELETE
+     * @param array $definicaoDaRota Array de definiçao da Rota
+     * @return $this
+     */
+    public function rotaDelete(array $definicaoDaRota)
+    {
+        // valida a rota
+        $this->verificaEstruturaDaRota($definicaoDaRota);
+
+        // explode a rota para facilitar o armazenamento em tabela de espalhamento
+        // o que facilita na hora de recuperar esta definiçao de rota para consulta
+        $arrRotaExplodida = explode('/', $definicaoDaRota[0]);
+
+        // registra a rota
+        // por padrao as rotas definidas sao registradas seguindo a classificaçao:
+        // MetodoHTTP -> tamanhoDoArrayDeRotas -> indiceDinamico
+        $this->arrRouteMap['DELETE'][count($arrRotaExplodida)][] = $this->propriedadesDoArrayDeRotas($definicaoDaRota, $arrRotaExplodida);
 
         return $this;
     }

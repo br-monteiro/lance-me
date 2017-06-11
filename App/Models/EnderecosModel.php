@@ -130,9 +130,7 @@ class EnderecosModel extends ModelAbstract
      */
     public function retornaStatsPorId($idUrl)
     {
-        $stmt = $this->pdo()->prepare("SELECT * FROM {$this->entidade} WHERE id = ? ;");
-        $stmt->execute([$idUrl]);
-        $stats = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $stats = $this->retornaRegistroPorId($idUrl);
 
         if (!$stats) {
             $this->header->setHttpHeader(404);
@@ -145,6 +143,40 @@ class EnderecosModel extends ModelAbstract
             "url" => $stats['url'],
             "shortUrl" => $stats['shortUrl']
         ]);
+    }
+
+    /**
+     * Deleta um registro do Banco de Dados de acordo com o ID informado
+     * @param int $idUrl
+     * @return boolean
+     */
+    public function deletaUrlPorId($idUrl)
+    {
+        $stats = $this->retornaRegistroPorId($idUrl);
+
+        if (!$stats) {
+            $this->header->setHttpHeader(404);
+            return false;
+        }
+
+        $stmt = $this->pdo()->prepare("DELETE FROM {$this->entidade} WHERE id = ?");
+        $this->contentType();
+
+        if (!$stmt->execute([$idUrl])) {
+            $this->header->setHttpHeader(500);
+        }
+    }
+
+    /**
+     * Retorna o registro de acordo com o id informado
+     * @param int $idUrl
+     * @return boolean | array
+     */
+    private function retornaRegistroPorId($idUrl)
+    {
+        $stmt = $this->pdo()->prepare("SELECT * FROM {$this->entidade} WHERE id = ? ;");
+        $stmt->execute([$idUrl]);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     /**

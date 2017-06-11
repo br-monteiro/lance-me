@@ -82,7 +82,7 @@ class EnderecosModel extends ModelAbstract
             return true;
         }
     }
-    
+
     /**
      * Retorna statisticas de acesso
      */
@@ -90,7 +90,32 @@ class EnderecosModel extends ModelAbstract
     {
         $stats = $this->retornaStatsDeAcesso();
         $topDez = $this->retornaTopDez();
-        
+
+        $this->contentType()->toJson([
+            "hists" => $stats['qtdHits'],
+            "urlCount" => $stats['qtdRegistros'],
+            "topUrls" => $topDez
+        ]);
+    }
+
+    /**
+     * Retorna statisticas de acesso
+     */
+    public function retornaStatsPorUsuario($userId)
+    {
+        $usuarioModel = new UsuariosModel();
+        // verifica se o usuario e valido
+        $usuario = $usuarioModel->consultaUsuarioPorNome($userId);
+
+        if (!$usuario) {
+            $this->contentType();
+            $this->header->setHttpHeader(404);
+            return false;
+        }
+
+        $stats = $this->retornaStatsDeAcesso($usuario['id']);
+        $topDez = $this->retornaTopDez($usuario['id']);
+
         $this->contentType()->toJson([
             "hists" => $stats['qtdHits'],
             "urlCount" => $stats['qtdRegistros'],
@@ -102,16 +127,20 @@ class EnderecosModel extends ModelAbstract
      * Retorna os dez registros mais acessados
      * @return array Resultado com os Top 10 mais acessados
      */
-    private function retornaTopDez()
+    private function retornaTopDez($userId = null)
     {
-        $stmt = $this->pdo()->prepare("SELECT id, hits, url, shortUrl FROM {$this->entidade} ORDER BY hits DESC LIMIT 10");
+        $whereUsuario = $userId ? ' WHERE usuarios_id = ' . $userId : null;
+
+        $stmt = $this->pdo()->prepare("SELECT id, hits, url, shortUrl FROM {$this->entidade} {$whereUsuario} ORDER BY hits DESC LIMIT 10");
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    private function retornaStatsDeAcesso()
+    private function retornaStatsDeAcesso($userId = null)
     {
-        $stmt = $this->pdo()->prepare("SELECT COUNT(*) as qtdRegistros, SUM(hits) AS qtdHits FROM {$this->entidade}");
+        $whereUsuario = $userId ? ' WHERE usuarios_id = ' . $userId : null;
+
+        $stmt = $this->pdo()->prepare("SELECT COUNT(*) as qtdRegistros, SUM(hits) AS qtdHits FROM {$this->entidade} {$whereUsuario}");
         $stmt->execute();
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }

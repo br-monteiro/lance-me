@@ -60,6 +60,28 @@ class UsuariosModel extends ModelAbstract
     }
 
     /**
+     * Deleta o registro de usuario de acordo com o ID informado
+     * @param string $userId Nome do Usuario
+     * @return boolean
+     */
+    public function deleteUsuarioPorId($userId)
+    {
+        $usuario = $this->consultaUsuarioPorNome($userId);
+        $this->contentType();
+
+        if (!$usuario) {
+            $this->header->setHttpHeader(404);
+            return false;
+        }
+
+        $stmt = $this->pdo()->prepare("DELETE FROM {$this->entidade} WHERE id = ?");
+
+        if (!$stmt->execute([$usuario['id']])) {
+            $this->header->setHttpHeader(500);
+        }
+    }
+
+    /**
      * Consulta usuario por Nome
      * @param string $nomeDoUsuario
      * @return boolean | array

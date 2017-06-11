@@ -1,7 +1,7 @@
 <?php
 /**
  * @author Edson B S Monteiro <bruno.monteirodg@gmail.com>
- * @version 0.0.1
+ * @version 0.0.2
  * 
  * LAUS DEO
  * 
@@ -24,8 +24,12 @@ class ModelAbstract
      * Referencia para o Objeto PDO
      * @return \PDO
      */
-    public function pdo()
+    protected function pdo()
     {
         return $this->sgbdConnection->getConnection();
+    }
+    
+    protected function toJson($json) {
+        echo json_encode($json);
     }
 }

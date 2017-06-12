@@ -31,17 +31,31 @@ class EnderecosModel extends ModelAbstract
 
     public function verificaUrlPorId($idUrl)
     {
-        $stmt = $this->pdo()->prepare("SELECT url FROM {$this->entidade} WHERE id = ?");
+        $stmt = $this->pdo()->prepare("SELECT url, hits FROM {$this->entidade} WHERE id = ?");
         $stmt->execute([$idUrl]);
         $url = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         if ($url) {
+
+            $this->addHit($url['hits'], $idUrl);
+
             $this->header->setHttpHeader(301);
             header("Location: " . $url['url']);
             return true;
         }
 
         $this->header->setHttpHeader(404);
+    }
+
+    /**
+     * Incrementa o numero de hits de uma URL
+     * @param int $hits
+     * @param int $id
+     */
+    private function addHit($hits, $id)
+    {
+        $hits += 1;
+        $this->pdo()->query("UPDATE {$this->entidade} SET hits = {$hits} WHERE id = {$id};");
     }
 
     /**

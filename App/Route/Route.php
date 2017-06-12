@@ -29,6 +29,8 @@ class Route
      */
     public function registra()
     {
+        $this->routeMap->rotaGet(['/', 'UsuariosController@index', []]);
+
         $this->routeMap->rotaGet(['/urls/{id}', 'EnderecosController@redirecionar', [
                 'id' => '/\d+/'
         ]]);

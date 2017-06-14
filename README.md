@@ -48,7 +48,7 @@ para
     DocumentRoot /diretorio/da/aplicacao/public/
 ```
 
-__Habilitando Modo rewrite__: Esta configuraçao e necessária o correto funcionamento das rotas
+__Habilitando Modo rewrite__: Esta configuração é necessária para o correto funcionamento das rotas
 ```
 # a2enmod rewrite
 ```

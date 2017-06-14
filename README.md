@@ -47,6 +47,11 @@ para
 ```
     DocumentRoot /diretorio/da/aplicacao/public/
 ```
+
+__Habilitando Modo rewrite__: Esta configuraçao e necessária o correto funcionamento das rotas
+```
+# a2enmod rewrite
+```
 Após as alterações, reinicie o Apache Server:
 ```
 # service apache2 restart
